@@ -33,6 +33,7 @@ export default function Events() {
         </TableRow>
       </TableHead>
       <TableBody>
+        {/* Mapping Events Data with id to make tablecells */}
         {events.map((events) => (
           <TableRow key={events.id}>
             <TableCell>{events.event}</TableCell>
@@ -49,6 +50,7 @@ export default function Events() {
         </TableRow>
       </TableHead>
       <TableBody>
+        {/* Mapping eventsReady Data with id to make tablecells */}
         {eventsReady.map((eventsReady) => (
           <TableRow key={eventsReady.id}>
             <TableCell>{eventsReady.event}</TableCell>

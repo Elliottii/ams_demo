@@ -33,6 +33,7 @@ export default function Orders() {
         </TableRow>
       </TableHead>
       <TableBody>
+        {/* Mapping Orders Data with id to make tablecells */}
         {orders.map((orders) => (
           <TableRow key={orders.id}>
             <TableCell>{orders.event}</TableCell>
@@ -49,6 +50,7 @@ export default function Orders() {
         </TableRow>
       </TableHead>
       <TableBody>
+        {/* Mapping ordersReady Data with id to make tablecells */}
         {ordersReady.map((ordersReady) => (
           <TableRow key={ordersReady.id}>
             <TableCell>{ordersReady.event}</TableCell>

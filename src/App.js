@@ -205,6 +205,7 @@ export default function App() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 2 }}>
         <DrawerHeader />
+        {/* Components routes */}
         <BrowserRouter>
           <Routes>
             <Route exact path="/" element={<Login />} />

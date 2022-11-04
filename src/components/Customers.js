@@ -50,6 +50,7 @@ export default function Customers() {
         </TableRow>
       </TableHead>
       <TableBody>
+        {/* Mapping Customers Data with id to make tablecells */}
         {customers.map((customers) => (
           <TableRow key={customers.id}>
             <TableCell>{customers.name}</TableCell>

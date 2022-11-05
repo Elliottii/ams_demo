@@ -4,23 +4,7 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-
-// Generate Events Data
-function createData(id, event, time, customer) {
-  return { id, event, time, customer };
-}
-
-const events = [
-  createData(0, "Hiekoituslaatikon täyttö tilattu", "14:25", "As Oy Bulevardi"),
-  createData(1, "Hiekoituslaatikko 25%", "14:15", "As Oy Bulevardi"),
-  createData(2, "Hiekoitus käynnissä", "14:05", "As Oy Bulevardi"),
-];
-
-const eventsReady = [
-  createData(0, "Hiekoituslaatikko täytetty", "14:55", "As Oy Bulevardi"),
-  createData(1, "Hiekoitus toimitettu", "14:45", "As Oy Bulevardi"),
-  createData(2, "Hiekoitus toimitettu", "11:25", "As Oy Aapola"),
-];
+import { events, eventsReady } from "../data/eventsData";
 
 export default function Events() {
   return (

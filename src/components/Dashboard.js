@@ -32,7 +32,7 @@ export default function Dashboard() {
         </Grid>
         <Grid item xs={12} lg={3}>
           <Item>
-            <Orders />
+            <Customers />
           </Item>
         </Grid>
       </Grid>

@@ -4,6 +4,7 @@ import Dashboard from "./views/Dashboard";
 import Login from "./views/Login";
 import Events from "./views/Events";
 import Orders from "./views/Orders";
+import Settings from "./views/Settings";
 import Map from "./views/Map";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
@@ -187,7 +188,7 @@ export default function App() {
         <Divider />
         <List>
           <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton>
+            <ListItemButton onClick={() => navigate("/settings")}>
               <ListItemIcon>
                 <SettingsIcon />
               </ListItemIcon>
@@ -214,6 +215,7 @@ export default function App() {
           <Route path="/events" element={<Events />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/map" element={<Map />} />
+          <Route path="/settings" element={<Settings />} />
           <Route path="/logout" element={<Login />} />
         </Routes>
       </Box>

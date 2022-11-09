@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,11 +8,18 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import IconButton from "@mui/material/IconButton";
 import DeleteIcon from "@mui/icons-material/Delete";
-
 import AddCustomer from "../components/AddCustomer";
 
 export default function Customers() {
   const [customers, setCustomers] = useState([]);
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#D9D9D9",
+    ...theme.typography.body2,
+    borderRadius: 15,
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  }));
 
   useEffect(() => {
     fetchItems();
@@ -54,38 +63,40 @@ export default function Customers() {
   };
 
   return (
-    <Table size="small">
-      <TableHead>
-        <TableCell>Asiakkaat</TableCell>
-        <TableCell></TableCell>
-        <TableCell></TableCell>
-        <TableCell>
-          <AddCustomer addCustomer={addCustomer} />
-        </TableCell>
-      </TableHead>
-      <TableHead>
-        <TableRow>
-          <TableCell>Nimi</TableCell>
-          <TableCell>Osoite</TableCell>
-          <TableCell>Alue</TableCell>
+    <Item>
+      <Table size="small">
+        <TableHead>
+          <TableCell>Asiakkaat</TableCell>
           <TableCell></TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {/* Mapping Customers Data with id to make tablecells */}
-        {customers.map((customers) => (
-          <TableRow key={customers.id}>
-            <TableCell>{customers.name}</TableCell>
-            <TableCell>{customers.address}</TableCell>
-            <TableCell>{customers.region}</TableCell>
-            <TableCell>
-              <IconButton onClick={() => deleteCustomer(customers.id)}>
-                <DeleteIcon />
-              </IconButton>
-            </TableCell>
+          <TableCell></TableCell>
+          <TableCell>
+            <AddCustomer addCustomer={addCustomer} />
+          </TableCell>
+        </TableHead>
+        <TableHead>
+          <TableRow>
+            <TableCell>Nimi</TableCell>
+            <TableCell>Osoite</TableCell>
+            <TableCell>Alue</TableCell>
+            <TableCell></TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHead>
+        <TableBody>
+          {/* Mapping Customers Data with id to make tablecells */}
+          {customers.map((customers) => (
+            <TableRow key={customers.id}>
+              <TableCell>{customers.name}</TableCell>
+              <TableCell>{customers.address}</TableCell>
+              <TableCell>{customers.region}</TableCell>
+              <TableCell>
+                <IconButton onClick={() => deleteCustomer(customers.id)}>
+                  <DeleteIcon />
+                </IconButton>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Item>
   );
 }

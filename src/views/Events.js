@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { styled } from "@mui/material/styles";
+import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,6 +10,14 @@ import { eventsReady } from "../data/eventsData";
 
 export default function Events() {
   const [events, setEvents] = useState([]);
+
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#D9D9D9",
+    ...theme.typography.body2,
+    borderRadius: 15,
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  }));
 
   useEffect(() => {
     fetchItems();
@@ -28,41 +38,43 @@ export default function Events() {
     setEvents(valueKeys);
   };
   return (
-    <Table size="small">
-      <TableHead>
-        <TableRow>
-          <TableCell>Tapahtumat</TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {/* Mapping Events Data with id to make tablecells */}
-        {events.map((events) => (
-          <TableRow key={events.id}>
-            <TableCell>{events.event}</TableCell>
-            <TableCell>{events.time}</TableCell>
-            <TableCell>{events.customer}</TableCell>
+    <Item>
+      <Table size="small">
+        <TableHead>
+          <TableRow>
+            <TableCell>Tapahtumat</TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-      <TableHead>
-        <TableRow>
-          <TableCell>Valmiit</TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {/* Mapping eventsReady Data with id to make tablecells */}
-        {eventsReady.map((eventsReady) => (
-          <TableRow key={eventsReady.id}>
-            <TableCell>{eventsReady.event}</TableCell>
-            <TableCell>{eventsReady.time}</TableCell>
-            <TableCell>{eventsReady.customer}</TableCell>
+        </TableHead>
+        <TableBody>
+          {/* Mapping Events Data with id to make tablecells */}
+          {events.map((events) => (
+            <TableRow key={events.id}>
+              <TableCell>{events.event}</TableCell>
+              <TableCell>{events.time}</TableCell>
+              <TableCell>{events.customer}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+        <TableHead>
+          <TableRow>
+            <TableCell>Valmiit</TableCell>
+            <TableCell></TableCell>
+            <TableCell></TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-    </Table>
+        </TableHead>
+        <TableBody>
+          {/* Mapping eventsReady Data with id to make tablecells */}
+          {eventsReady.map((eventsReady) => (
+            <TableRow key={eventsReady.id}>
+              <TableCell>{eventsReady.event}</TableCell>
+              <TableCell>{eventsReady.time}</TableCell>
+              <TableCell>{eventsReady.customer}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </Item>
   );
 }

@@ -9,7 +9,7 @@ import Orders from "./Orders";
 
 export default function Dashboard() {
   const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#D9D9D9",
     ...theme.typography.body2,
     borderRadius: 15,
     textAlign: "center",

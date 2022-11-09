@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Map from "../components/GoogleMap";
 
-export default function Dashboard() {
+export default function Mapbox() {
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.body2,

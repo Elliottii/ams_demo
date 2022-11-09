@@ -4,10 +4,13 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import AddCustomer from "./AddCustomer";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
+
+import AddCustomer from "../components/AddCustomer";
 
 export default function Customers() {
-  const [customers, setCustomer] = useState([]);
+  const [customers, setCustomers] = useState([]);
 
   useEffect(() => {
     fetchItems();
@@ -25,7 +28,7 @@ export default function Customers() {
     const valueKeys = Object.values(data).map((item, index) =>
       Object.defineProperty(item, "id", { value: keys[index] })
     );
-    setCustomer(valueKeys);
+    setCustomers(valueKeys);
   };
 
   const addCustomer = (newCustomer) => {
@@ -39,7 +42,9 @@ export default function Customers() {
 
   const deleteCustomer = (id) => {
     fetch(
-      "https://amsdemo123-default-rtdb.firebaseio.com/customers/${id}.json",
+      "https://amsdemo123-default-rtdb.firebaseio.com/customers/" +
+        id +
+        ".json",
       {
         method: "DELETE",
       }
@@ -53,6 +58,7 @@ export default function Customers() {
       <TableHead>
         <TableCell>Asiakkaat</TableCell>
         <TableCell></TableCell>
+        <TableCell></TableCell>
         <TableCell>
           <AddCustomer addCustomer={addCustomer} />
         </TableCell>
@@ -62,6 +68,7 @@ export default function Customers() {
           <TableCell>Nimi</TableCell>
           <TableCell>Osoite</TableCell>
           <TableCell>Alue</TableCell>
+          <TableCell></TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -71,6 +78,11 @@ export default function Customers() {
             <TableCell>{customers.name}</TableCell>
             <TableCell>{customers.address}</TableCell>
             <TableCell>{customers.region}</TableCell>
+            <TableCell>
+              <IconButton onClick={() => deleteCustomer(customers.id)}>
+                <DeleteIcon />
+              </IconButton>
+            </TableCell>
           </TableRow>
         ))}
       </TableBody>

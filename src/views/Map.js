@@ -3,10 +3,7 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
-import Map from "./Map";
-import Customers from "./Customers";
-import Events from "./Events";
-import Orders from "./Orders";
+import Map from "../components/GoogleMap";
 
 export default function Dashboard() {
   const Item = styled(Paper)(({ theme }) => ({
@@ -20,19 +17,9 @@ export default function Dashboard() {
   return (
     <Box sx={{ display: "flex" }}>
       <Grid container spacing={2}>
-        <Grid item xs={12} lg={6}>
+        <Grid item xs={12} lg={12}>
           <Item>
             <Map />
-          </Item>
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <Item>
-            <Events />
-          </Item>
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <Item>
-            <Customers />
           </Item>
         </Grid>
       </Grid>

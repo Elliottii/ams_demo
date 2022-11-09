@@ -1,12 +1,32 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import { events, eventsReady } from "../data/eventsData";
+import { eventsReady } from "../data/eventsData";
 
 export default function Events() {
+  const [events, setEvents] = useState([]);
+
+  useEffect(() => {
+    fetchItems();
+  }, []);
+
+  const fetchItems = () => {
+    fetch("https://amsdemo123-default-rtdb.firebaseio.com/events/.json")
+      .then((response) => response.json())
+      .then((data) => addKeys(data))
+      .catch((err) => console.error(err));
+  };
+
+  const addKeys = (data) => {
+    const keys = Object.keys(data);
+    const valueKeys = Object.values(data).map((item, index) =>
+      Object.defineProperty(item, "id", { value: keys[index] })
+    );
+    setEvents(valueKeys);
+  };
   return (
     <Table size="small">
       <TableHead>

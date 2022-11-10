@@ -20,7 +20,7 @@ export default function Dashboard() {
   return (
     <Box sx={{ display: "flex" }}>
       <Grid container spacing={2}>
-        <Grid item xs={12} lg={6}>
+        <Grid item xs={12} lg={6}> {/* tähän muuttamalla arvoja saa muokattua card koko */}
           <Item>
             <Map />
           </Item>

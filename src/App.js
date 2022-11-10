@@ -1,10 +1,12 @@
 import * as React from "react";
-import Customers from "./components/Customers";
-import Dashboard from "./components/Dashboard";
-import Login from "./components/Login";
-import Events from "./components/Events";
-import Orders from "./components/Orders";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Customers from "./views/Customers";
+import Dashboard from "./views/Dashboard";
+import Login from "./views/Login";
+import Events from "./views/Events";
+import Orders from "./views/Orders";
+import Settings from "./views/Settings";
+import Map from "./views/Map";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -100,7 +102,7 @@ const Drawer = styled(MuiDrawer, {
 export default function App() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
-
+  const navigate = useNavigate();
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -144,7 +146,7 @@ export default function App() {
         <Divider />
         <List>
           <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton>
+            <ListItemButton onClick={() => navigate("/dashboard")}>
               <ListItemIcon>
                 <DashboardIcon />
               </ListItemIcon>
@@ -152,7 +154,7 @@ export default function App() {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton>
+            <ListItemButton onClick={() => navigate("/customers")}>
               <ListItemIcon>
                 <CorporateFareIcon />
               </ListItemIcon>
@@ -160,7 +162,7 @@ export default function App() {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton>
+            <ListItemButton onClick={() => navigate("/events")}>
               <ListItemIcon>
                 <AssignmentTurnedInIcon />
               </ListItemIcon>
@@ -168,7 +170,7 @@ export default function App() {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton>
+            <ListItemButton onClick={() => navigate("/orders")}>
               <ListItemIcon>
                 <AssignmentIcon />
               </ListItemIcon>
@@ -176,7 +178,7 @@ export default function App() {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton>
+            <ListItemButton onClick={() => navigate("/map")}>
               <ListItemIcon>
                 <MapIcon />
               </ListItemIcon>
@@ -187,7 +189,7 @@ export default function App() {
         <Divider />
         <List>
           <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton>
+            <ListItemButton onClick={() => navigate("/settings")}>
               <ListItemIcon>
                 <SettingsIcon />
               </ListItemIcon>
@@ -195,7 +197,7 @@ export default function App() {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton>
+            <ListItemButton onClick={() => navigate("/logout")}>
               <ListItemIcon>
                 <LogoutIcon />
               </ListItemIcon>
@@ -207,15 +209,16 @@ export default function App() {
       <Box component="main" sx={{ flexGrow: 1, p: 2 }}>
         <DrawerHeader />
         {/* Components routes */}
-        <BrowserRouter>
-          <Routes>
-            <Route exact path="/" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/customers" element={<Customers />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/orders" element={<Orders />} />
-          </Routes>
-        </BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<Login />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/map" element={<Map />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/logout" element={<Login />} />
+        </Routes>
       </Box>
     </Box>
   );

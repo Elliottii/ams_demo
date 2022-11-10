@@ -35,7 +35,7 @@ function AddCustomer(props) {
 
   return (
     <div>
-      <IconButton variant="outlined" color="primary" onClick={handleOpen}>
+      <IconButton variant="outlined" onClick={handleOpen}>
         <AddBoxIcon />
       </IconButton>
       <Dialog open={open}>

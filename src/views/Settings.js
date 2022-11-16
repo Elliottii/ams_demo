@@ -16,12 +16,13 @@ export default function Settings() {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <Grid container spacing={2}>
+      <Grid container spacing={3}>
         <Grid item xs={12} lg={12}>
           <Grid>Asetukset</Grid>
         </Grid>
         <Grid item xs={6} lg={6}>
           <Item>
+            
             <Grid>
               <Button>Muokkaa profiilia</Button>
             </Grid>

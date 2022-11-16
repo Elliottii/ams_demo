@@ -18,18 +18,18 @@ export default function Dashboard() {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <Grid container spacing={2}>
-        <Grid item xs={12} lg={6}> {/* tähän muuttamalla arvoja saa muokattua card koko */}
+      <Grid container spacing={1}>
+        <Grid item xs={15} lg={6}> {/* xs */}
           <Item>
             <Map />
           </Item>
         </Grid>
-        <Grid item xs={12} lg={3}>
+        <Grid item xs={15} lg={6}>
           <Item>
             <Events />
           </Item>
         </Grid>
-        <Grid item xs={12} lg={3}>
+        <Grid item xs={15} lg={6}>
           <Item>
             <Orders />
           </Item>

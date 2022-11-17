@@ -13,6 +13,11 @@
   }
 }
 
+@font-face {
+  font-family: Calibri Light, Arial;
+  src: url(https://fonts.cdnfonts.com/css/calibri-light);
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -24,6 +29,10 @@
   color: white;
 }
 
+/*.MuiDrawer-paper {
+  background-color: #0A1045;
+}
+*/
 .App-link {
   color: #61dafb;
 }

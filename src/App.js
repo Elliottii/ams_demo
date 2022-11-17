@@ -5,7 +5,6 @@ import Login from "./views/Login";
 import Events from "./views/Events";
 import Orders from "./views/Orders";
 import Settings from "./views/Settings";
-import Map from "./views/Map";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
@@ -32,7 +31,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -40,6 +39,7 @@ const openedMixin = (theme) => ({
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.enteringScreen,
   }),
+  backgroundColor: "#000B1C",
   overflowX: "hidden",
 });
 
@@ -48,6 +48,7 @@ const closedMixin = (theme) => ({
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
+  backgroundColor: "#000B1C",
   overflowX: "hidden",
   width: `calc(${theme.spacing(7)} + 1px)`,
   [theme.breakpoints.up("sm")]: {
@@ -66,7 +67,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
-  backgroundColor: "#0A1045",
+  backgroundColor: "#000B1C",
   zIndex: theme.zIndex.drawer + 1,
   transition: theme.transitions.create(["width", "margin"], {
     easing: theme.transitions.easing.sharp,
@@ -113,7 +114,7 @@ export default function App() {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", backgroundColor: "#1B1B28" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>
@@ -136,7 +137,7 @@ export default function App() {
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton sx={{ color: "#fff" }} onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
             ) : (
@@ -145,11 +146,11 @@ export default function App() {
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
+        <List sx={{ color: "#fff" }}>
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemButton onClick={() => navigate("/dashboard")}>
               <ListItemIcon>
-                <DashboardIcon />
+                <DashboardIcon sx={{ color: "#fff" }} />
               </ListItemIcon>
               <ListItemText primary="Kojelauta" />
             </ListItemButton>
@@ -157,7 +158,7 @@ export default function App() {
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemButton onClick={() => navigate("/customers")}>
               <ListItemIcon>
-                <CorporateFareIcon />
+                <CorporateFareIcon sx={{ color: "#fff" }} />
               </ListItemIcon>
               <ListItemText primary="Asiakkaat" />
             </ListItemButton>
@@ -165,7 +166,7 @@ export default function App() {
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemButton onClick={() => navigate("/events")}>
               <ListItemIcon>
-                <AssignmentTurnedInIcon />
+                <AssignmentTurnedInIcon sx={{ color: "#fff" }} />
               </ListItemIcon>
               <ListItemText primary="Tapahtumat" />
             </ListItemButton>
@@ -173,26 +174,22 @@ export default function App() {
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemButton onClick={() => navigate("/orders")}>
               <ListItemIcon>
-                <AssignmentIcon />
+                <AssignmentIcon sx={{ color: "#fff" }} />
               </ListItemIcon>
               <ListItemText primary="Tilaukset" />
             </ListItemButton>
           </ListItem>
-          <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton onClick={() => navigate("/map")}>
-              <ListItemIcon>
-                <MapIcon />
-              </ListItemIcon>
-              <ListItemText primary="Kartta" />
-            </ListItemButton>
-          </ListItem>
         </List>
         <Divider />
-        <List>
+        <List
+          sx={{
+            color: "#fff",
+          }}
+        >
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemButton onClick={() => navigate("/settings")}>
               <ListItemIcon>
-                <SettingsIcon />
+                <SettingsIcon sx={{ color: "#fff" }} />
               </ListItemIcon>
               <ListItemText primary="Asetukset" />
             </ListItemButton>
@@ -200,14 +197,14 @@ export default function App() {
           <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemButton onClick={() => navigate("/logout")}>
               <ListItemIcon>
-                <LogoutIcon />
+                <LogoutIcon sx={{ color: "#fff" }} />
               </ListItemIcon>
               <ListItemText primary="Kirjaudu ulos" />
             </ListItemButton>
           </ListItem>
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 2 }}>
+      <Box sx={{ flexGrow: 1, p: 2 }}>
         <DrawerHeader />
         {/* Components routes */}
         <Routes>
@@ -216,7 +213,6 @@ export default function App() {
           <Route path="/customers" element={<Customers />} />
           <Route path="/events" element={<Events />} />
           <Route path="/orders" element={<Orders />} />
-          <Route path="/map" element={<Map />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/logout" element={<Login />} />
         </Routes>

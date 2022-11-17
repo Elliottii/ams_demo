@@ -6,10 +6,22 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import { ordersReady } from "../data/ordersData";
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
+
+  const [customer, setCustomer] = React.useState("");
+
+  const handleChange = (event) => {
+    setCustomer(event.target.value);
+  };
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#D9D9D9",
@@ -38,43 +50,65 @@ export default function Orders() {
     setOrders(valueKeys);
   };
   return (
-    <Item>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>Tilaukset</TableCell>
-            <TableCell></TableCell>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {/* Mapping Orders Data with id to make tablecells */}
-          {orders.map((orders) => (
-            <TableRow key={orders.id}>
-              <TableCell>{orders.event}</TableCell>
-              <TableCell>{orders.time}</TableCell>
-              <TableCell>{orders.customer}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-        <TableHead>
-          <TableRow>
-            <TableCell>Toimitetut</TableCell>
-            <TableCell></TableCell>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {/* Mapping ordersReady Data with id to make tablecells */}
-          {ordersReady.map((ordersReady) => (
-            <TableRow key={ordersReady.id}>
-              <TableCell>{ordersReady.event}</TableCell>
-              <TableCell>{ordersReady.time}</TableCell>
-              <TableCell>{ordersReady.customer}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Item>
+    <Box sx={{ display: "flex" }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} lg={12}>
+          <Item>
+            <FormControl fullWidth>
+              <InputLabel variant="filled">Tilaukset</InputLabel>
+              <Select value={customer} onChange={handleChange}>
+                <MenuItem value={0}>As Oy Bulevardi</MenuItem>
+                <MenuItem value={1}>As Oy Aapola</MenuItem>
+              </Select>
+            </FormControl>
+          </Item>
+        </Grid>
+        <Grid item xs={12} lg={12}>
+          <Item>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Tilaukset</TableCell>
+                  <TableCell align="right">Aika</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {/* Mapping Orders Data with id to make tablecells */}
+                {orders.map((orders) => (
+                  <TableRow key={orders.id}>
+                    <TableCell>{orders.event}</TableCell>
+                    <TableCell align="right">{orders.time}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Item>
+        </Grid>
+        <Grid item xs={12} lg={12}>
+          <Item>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Toimitetut</TableCell>
+                  <TableCell align="right">Aika</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {/* Mapping ordersReady Data with id to make tablecells */}
+                {ordersReady.map((ordersReady) => (
+                  <TableRow key={ordersReady.id}>
+                    <TableCell>{ordersReady.event}</TableCell>
+                    <TableCell align="right">{ordersReady.time}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Item>
+        </Grid>
+        <Grid item xs={12} lg={3}>
+          <Item></Item>
+        </Grid>
+      </Grid>
+    </Box>
   );
 }

@@ -6,10 +6,22 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 import { eventsReady } from "../data/eventsData";
 
 export default function Events() {
   const [events, setEvents] = useState([]);
+
+  const [customer, setCustomer] = React.useState("");
+
+  const handleChange = (event) => {
+    setCustomer(event.target.value);
+  };
 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#D9D9D9",
@@ -38,43 +50,65 @@ export default function Events() {
     setEvents(valueKeys);
   };
   return (
-    <Item>
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>Tapahtumat</TableCell>
-            <TableCell></TableCell>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {/* Mapping Events Data with id to make tablecells */}
-          {events.map((events) => (
-            <TableRow key={events.id}>
-              <TableCell>{events.event}</TableCell>
-              <TableCell>{events.time}</TableCell>
-              <TableCell>{events.customer}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-        <TableHead>
-          <TableRow>
-            <TableCell>Valmiit</TableCell>
-            <TableCell></TableCell>
-            <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {/* Mapping eventsReady Data with id to make tablecells */}
-          {eventsReady.map((eventsReady) => (
-            <TableRow key={eventsReady.id}>
-              <TableCell>{eventsReady.event}</TableCell>
-              <TableCell>{eventsReady.time}</TableCell>
-              <TableCell>{eventsReady.customer}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Item>
+    <Box sx={{ display: "flex" }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} lg={12}>
+          <Item>
+            <FormControl fullWidth>
+              <InputLabel variant="filled">Tapahtumat</InputLabel>
+              <Select value={customer} onChange={handleChange}>
+                <MenuItem value={0}>As Oy Bulevardi</MenuItem>
+                <MenuItem value={1}>As Oy Aapola</MenuItem>
+              </Select>
+            </FormControl>
+          </Item>
+        </Grid>
+        <Grid item xs={12} lg={12}>
+          <Item>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Tapahtumat</TableCell>
+                  <TableCell align="right">Aika</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {/* Mapping Events Data with id to make tablecells */}
+                {events.map((events) => (
+                  <TableRow key={events.id}>
+                    <TableCell>{events.event}</TableCell>
+                    <TableCell align="right">{events.time}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Item>
+        </Grid>
+        <Grid item xs={12} lg={12}>
+          <Item>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Valmiit</TableCell>
+                  <TableCell align="right">Aika</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {/* Mapping eventsReady Data with id to make tablecells */}
+                {eventsReady.map((eventsReady) => (
+                  <TableRow key={eventsReady.id}>
+                    <TableCell>{eventsReady.event}</TableCell>
+                    <TableCell align="right">{eventsReady.time}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Item>
+        </Grid>
+        <Grid item xs={12} lg={3}>
+          <Item></Item>
+        </Grid>
+      </Grid>
+    </Box>
   );
 }

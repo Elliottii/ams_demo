@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
 export default function Settings() {
   const Item = styled(Paper)(({ theme }) => ({
@@ -11,6 +12,8 @@ export default function Settings() {
     ...theme.typography.body2,
     borderRadius: 15,
     textAlign: "left",
+    margin: 10,
+    padding: 10,
     color: theme.palette.text.secondary,
   }));
 
@@ -22,7 +25,6 @@ export default function Settings() {
         </Grid>
         <Grid item xs={6} lg={6}>
           <Item>
-            
             <Grid>
               <Button>Muokkaa profiilia</Button>
             </Grid>
@@ -36,7 +38,6 @@ export default function Settings() {
               <Button>Ilmoitukset</Button>
             </Grid>
           </Item>
-
           <Item>
             <Grid>
               <Button>Tietoa meistä</Button>
@@ -48,6 +49,7 @@ export default function Settings() {
         </Grid>
         <Grid item xs={6} lg={6}>
           <Item>{/*Settings display*/}</Item>
+
         </Grid>
       </Grid>
     </Box>

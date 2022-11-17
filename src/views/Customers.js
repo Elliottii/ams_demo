@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
+import Box from "@mui/material/Box";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -63,40 +64,42 @@ export default function Customers() {
   };
 
   return (
-    <Item>
-      <Table size="small">
-        <TableHead>
-          <TableCell>Asiakkaat</TableCell>
-          <TableCell></TableCell>
-          <TableCell></TableCell>
-          <TableCell>
-            <AddCustomer addCustomer={addCustomer} />
-          </TableCell>
-        </TableHead>
-        <TableHead>
-          <TableRow>
-            <TableCell>Nimi</TableCell>
-            <TableCell>Osoite</TableCell>
-            <TableCell>Alue</TableCell>
+    <Box sx={{ height: "90vh", backgroundColor: "#1B1B28" }}>
+      <Item>
+        <Table size="small">
+          <TableHead>
+            <TableCell>Asiakkaat</TableCell>
             <TableCell></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {/* Mapping Customers Data with id to make tablecells */}
-          {customers.map((customers) => (
-            <TableRow key={customers.id}>
-              <TableCell>{customers.name}</TableCell>
-              <TableCell>{customers.address}</TableCell>
-              <TableCell>{customers.region}</TableCell>
-              <TableCell>
-                <IconButton onClick={() => deleteCustomer(customers.id)}>
-                  <DeleteIcon />
-                </IconButton>
-              </TableCell>
+            <TableCell></TableCell>
+            <TableCell>
+              <AddCustomer addCustomer={addCustomer} />
+            </TableCell>
+          </TableHead>
+          <TableHead>
+            <TableRow>
+              <TableCell>Nimi</TableCell>
+              <TableCell>Osoite</TableCell>
+              <TableCell>Alue</TableCell>
+              <TableCell></TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </Item>
+          </TableHead>
+          <TableBody>
+            {/* Mapping Customers Data with id to make tablecells */}
+            {customers.map((customers) => (
+              <TableRow key={customers.id}>
+                <TableCell>{customers.name}</TableCell>
+                <TableCell>{customers.address}</TableCell>
+                <TableCell>{customers.region}</TableCell>
+                <TableCell>
+                  <IconButton onClick={() => deleteCustomer(customers.id)}>
+                    <DeleteIcon />
+                  </IconButton>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </Item>
+    </Box>
   );
 }

@@ -9,9 +9,10 @@ export default function Login() {
   const navigate = useNavigate();
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container maxWidth="xs">
       <Box
         sx={{
+          height: "65vh",
           marginTop: 30,
           display: "flex",
           flexDirection: "column",

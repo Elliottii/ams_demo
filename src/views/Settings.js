@@ -21,7 +21,7 @@ export default function Settings() {
     <Box sx={{ display: "flex" }}>
       <Grid container spacing={3}>
         <Grid item xs={12} lg={12}>
-          <Grid>Asetukset</Grid>
+          <Item>Asetukset</Item>
         </Grid>
         <Grid item xs={6} lg={6}>
           <Item>
@@ -49,7 +49,6 @@ export default function Settings() {
         </Grid>
         <Grid item xs={6} lg={6}>
           <Item>{/*Settings display*/}</Item>
-
         </Grid>
       </Grid>
     </Box>

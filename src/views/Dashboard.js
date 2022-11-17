@@ -14,22 +14,23 @@ export default function Dashboard() {
     borderRadius: 15,
     textAlign: "center",
     color: theme.palette.text.secondary,
+    style: { fontFamily: "Calibri Light" }
   }));
 
   return (
     <Box sx={{ display: "flex" }}>
-      <Grid container spacing={1}>
-        <Grid item xs={15} lg={6}> {/* xs */}
+      <Grid container spacing={3}>
+        <Grid item xs={10} lg={6}>
           <Item>
             <Map />
           </Item>
         </Grid>
-        <Grid item xs={15} lg={6}>
+        <Grid item xs={10} lg={3}>
           <Item>
             <Events />
           </Item>
         </Grid>
-        <Grid item xs={15} lg={6}>
+        <Grid item xs={10} lg={3}>
           <Item>
             <Orders />
           </Item>

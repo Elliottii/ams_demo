@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
+import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -17,8 +19,8 @@ export default function Customers() {
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#D9D9D9",
     ...theme.typography.body2,
-    borderRadius: 15,
-    textAlign: "center",
+    textAlign: "left",
+    padding: 10,
     color: theme.palette.text.secondary,
   }));
 
@@ -64,42 +66,45 @@ export default function Customers() {
   };
 
   return (
-    <Box sx={{ height: "90vh", backgroundColor: "#1B1B28" }}>
-      <Item>
-        <Table size="small">
-          <TableHead>
-            <TableCell>Asiakkaat</TableCell>
-            <TableCell></TableCell>
-            <TableCell></TableCell>
-            <TableCell>
-              <AddCustomer addCustomer={addCustomer} />
-            </TableCell>
-          </TableHead>
-          <TableHead>
-            <TableRow>
-              <TableCell>Nimi</TableCell>
-              <TableCell>Osoite</TableCell>
-              <TableCell>Alue</TableCell>
-              <TableCell></TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {/* Mapping Customers Data with id to make tablecells */}
-            {customers.map((customers) => (
-              <TableRow key={customers.id}>
-                <TableCell>{customers.name}</TableCell>
-                <TableCell>{customers.address}</TableCell>
-                <TableCell>{customers.region}</TableCell>
-                <TableCell>
-                  <IconButton onClick={() => deleteCustomer(customers.id)}>
-                    <DeleteIcon />
-                  </IconButton>
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </Item>
+    <Box sx={{ display: "flex" }}>
+      <Grid container spacing={2}>
+        <Grid item xs={12} lg={12}>
+          <Item>
+            <Typography variant="h6">Asiakkaat</Typography>
+          </Item>
+        </Grid>
+        <Grid item xs={12} lg={12}>
+          <Item>
+            <Table size="small">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Nimi</TableCell>
+                  <TableCell>Osoite</TableCell>
+                  <TableCell>Alue</TableCell>
+                  <TableCell>
+                    <AddCustomer addCustomer={addCustomer} />
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {/* Mapping Customers Data with id to make tablecells */}
+                {customers.map((customers) => (
+                  <TableRow key={customers.id}>
+                    <TableCell>{customers.name}</TableCell>
+                    <TableCell>{customers.address}</TableCell>
+                    <TableCell>{customers.region}</TableCell>
+                    <TableCell>
+                      <IconButton onClick={() => deleteCustomer(customers.id)}>
+                        <DeleteIcon />
+                      </IconButton>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </Item>
+        </Grid>
+      </Grid>
     </Box>
   );
 }

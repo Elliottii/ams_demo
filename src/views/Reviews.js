@@ -5,27 +5,47 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import Rating from "@mui/material/Rating";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 export default function Reviews() {
+  const [customer, setCustomer] = React.useState("");
+
+  const handleChange = (event) => {
+    setCustomer(event.target.value);
+  };
+
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#D9D9D9",
     ...theme.typography.body2,
-    borderRadius: 15,
     textAlign: "left",
     margin: 10,
     padding: 10,
     color: "black",
   }));
 
+  const Item2 = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#D9D9D9",
+    ...theme.typography.body2,
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  }));
+
   return (
     <Box sx={{ display: "flex" }}>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={12}>
-          <Item>
-            <Typography variant="body1" gutterBottom>
-              Palautteet
-            </Typography>
-          </Item>
+          <Item2>
+            <FormControl fullWidth>
+              <InputLabel variant="filled">Palautteet</InputLabel>
+              <Select value={customer} onChange={handleChange}>
+                <MenuItem value={0}>As Oy Bulevardi</MenuItem>
+                <MenuItem value={1}>As Oy Aapola</MenuItem>
+              </Select>
+            </FormControl>
+          </Item2>
         </Grid>
         <Grid item xs={12} lg={6}>
           <Item>

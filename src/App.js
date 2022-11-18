@@ -1,4 +1,5 @@
 import * as React from "react";
+import "./App.css";
 import Customers from "./views/Customers";
 import Dashboard from "./views/Dashboard";
 import Login from "./views/Login";
@@ -21,7 +22,6 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import CorporateFareIcon from "@mui/icons-material/CorporateFare";
 import AssignmentTurnedInIcon from "@mui/icons-material/AssignmentTurnedIn";
 import AssignmentIcon from "@mui/icons-material/Assignment";
-import MapIcon from "@mui/icons-material/Map";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -114,7 +114,7 @@ export default function App() {
   };
 
   return (
-    <Box sx={{ display: "flex", backgroundColor: "#1B1B28" }}>
+    <Box sx={{ display: "flex" }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
         <Toolbar>

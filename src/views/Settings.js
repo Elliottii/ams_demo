@@ -10,7 +10,6 @@ export default function Settings() {
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#D9D9D9",
     ...theme.typography.body2,
-    borderRadius: 15,
     textAlign: "left",
     margin: 10,
     padding: 10,
@@ -21,7 +20,9 @@ export default function Settings() {
     <Box sx={{ display: "flex" }}>
       <Grid container spacing={3}>
         <Grid item xs={12} lg={12}>
-          <Item>Asetukset</Item>
+          <Item>
+            <Typography variant="h6">Asetukset</Typography>
+          </Item>
         </Grid>
         <Grid item xs={6} lg={6}>
           <Item>

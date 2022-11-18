@@ -26,7 +26,6 @@ export default function Events() {
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#D9D9D9",
     ...theme.typography.body2,
-    borderRadius: 15,
     textAlign: "center",
     color: theme.palette.text.secondary,
   }));
@@ -104,9 +103,6 @@ export default function Events() {
               </TableBody>
             </Table>
           </Item>
-        </Grid>
-        <Grid item xs={12} lg={3}>
-          <Item></Item>
         </Grid>
       </Grid>
     </Box>

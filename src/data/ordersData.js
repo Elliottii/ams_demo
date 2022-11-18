@@ -12,5 +12,4 @@ export const ordersReady = [
     "As Oy Bulevardi"
   ),
   createData(2, "Hiekoitus", "03.01.2022 klo 12:45", "As Oy Aapola"),
-  createData(3, "Hiekoitus", "04.01.2022 klo 12:45", "As Oy Aapola"),
 ];

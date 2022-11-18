@@ -6,6 +6,7 @@ import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import InputLabel from "@mui/material/InputLabel";
@@ -13,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { ordersReady } from "../data/ordersData";
+import AddOrder from "../components/AddOrder";
 
 export default function Orders() {
   const [orders, setOrders] = useState([]);
@@ -26,7 +28,6 @@ export default function Orders() {
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#D9D9D9",
     ...theme.typography.body2,
-    borderRadius: 15,
     textAlign: "center",
     color: theme.palette.text.secondary,
   }));
@@ -105,8 +106,10 @@ export default function Orders() {
             </Table>
           </Item>
         </Grid>
-        <Grid item xs={12} lg={3}>
-          <Item></Item>
+        <Grid item xs={12} lg={12}>
+          <Item>
+            <AddOrder />
+          </Item>
         </Grid>
       </Grid>
     </Box>

@@ -12,7 +12,7 @@ export default function Login() {
     <Container maxWidth="xs">
       <Box
         sx={{
-          height: "65vh",
+          height: "100%",
           marginTop: 30,
           display: "flex",
           flexDirection: "column",
@@ -21,6 +21,12 @@ export default function Login() {
       >
         <Box sx={{ mt: 1 }}>
           <TextField
+            sx={{
+              input: {
+                background: "#D9D9D9",
+              },
+            }}
+            variant="filled"
             margin="normal"
             required
             fullWidth
@@ -28,7 +34,14 @@ export default function Login() {
             label="Käyttäjätunnus"
             name="account"
           />
+
           <TextField
+            sx={{
+              input: {
+                background: "#D9D9D9",
+              },
+            }}
+            variant="filled"
             margin="normal"
             required
             fullWidth
@@ -42,7 +55,7 @@ export default function Login() {
             type="submit"
             fullWidth
             variant="contained"
-            sx={{ mt: 3, mb: 2 }}
+            sx={{ backgroundColor: "#D9D9D9", color: "#306DE2", mt: 3, mb: 2 }}
           >
             Kirjaudu sisään
           </Button>

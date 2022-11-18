@@ -7,7 +7,7 @@ import Events from "./views/Events";
 import Orders from "./views/Orders";
 import Settings from "./views/Settings";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled, useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -30,8 +30,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 const drawerWidth = 200;
+
+const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -101,8 +105,9 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-export default function App() {
+function App() {
   const theme = useTheme();
+  const colorMode = React.useContext(ColorModeContext);
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
   const handleDrawerOpen = () => {
@@ -133,6 +138,9 @@ export default function App() {
           <Typography variant="h6" noWrap component="div">
             AMS
           </Typography>
+          <IconButton edge="end" sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+            {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+          </IconButton>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
@@ -215,8 +223,38 @@ export default function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/logout" element={<Login />} />
-        </Routes>
+        </Routes>      
       </Box>
-    </Box>
+    </Box> 
+  );
+}
+
+export default function ToggleColorMode() {
+  const [mode, setMode] = React.useState('light');
+  const colorMode = React.useMemo(
+    () => ({
+      toggleColorMode: () => {
+        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+      },
+    }),
+    [],
+  );
+
+  const theme = React.useMemo(
+    () =>
+      createTheme({
+        palette: {
+          mode,
+        },
+      }),
+    [mode],
+  );
+
+  return (
+    <ColorModeContext.Provider value={colorMode}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </ColorModeContext.Provider>
   );
 }

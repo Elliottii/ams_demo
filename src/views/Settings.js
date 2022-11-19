@@ -33,9 +33,6 @@ export default function Settings() {
               <Button>Vaihda salasana</Button>
             </Grid>
             <Grid>
-              <Button>Tumma tila</Button>
-            </Grid>
-            <Grid>
               <Button>Ilmoitukset</Button>
             </Grid>
           </Item>
@@ -53,5 +50,5 @@ export default function Settings() {
         </Grid>
       </Grid>
     </Box>
-  );
-}
+  )
+};

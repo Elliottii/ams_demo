@@ -5,8 +5,10 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 export default function Settings() {
+  const navigate = useNavigate();
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#D9D9D9",
     ...theme.typography.body2,
@@ -27,9 +29,6 @@ export default function Settings() {
         <Grid item xs={6} lg={6}>
           <Item>
             <Grid>
-              <Button>Muokkaa profiilia</Button>
-            </Grid>
-            <Grid>
               <Button>Vaihda salasana</Button>
             </Grid>
             <Grid>
@@ -38,15 +37,12 @@ export default function Settings() {
           </Item>
           <Item>
             <Grid>
-              <Button>Tietoa meistä</Button>
+              <Button onClick={() => navigate("/aboutus")}>Tietoa meistä</Button>
             </Grid>
             <Grid>
               <Button>Tieto- ja yksityisyyssuoja</Button>
             </Grid>
           </Item>
-        </Grid>
-        <Grid item xs={6} lg={6}>
-          <Item>{/*Settings display*/}</Item>
         </Grid>
       </Grid>
     </Box>

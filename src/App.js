@@ -32,6 +32,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
+import AboutUs from "./views/AboutUs";
 
 const drawerWidth = 200;
 
@@ -223,6 +224,7 @@ function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/logout" element={<Login />} />
+          <Route path="/aboutus" element={<AboutUs/>} />
         </Routes>      
       </Box>
     </Box> 

@@ -1,12 +1,10 @@
 import React, { useState } from "react";
-import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import AddBoxIcon from "@mui/icons-material/AddBox";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
@@ -43,12 +41,7 @@ function AddOrder() {
 
   return (
     <div>
-      <Button
-        sx={{ backgroundColor: "#D9D9D9", color: "#306DE2" }}
-        onClick={handleOpen}
-      >
-        Uusi tilaus
-      </Button>
+      <Button onClick={handleOpen}>Uusi tilaus</Button>
       <Dialog fullWidth open={open}>
         <DialogTitle>Uusi tilaus</DialogTitle>
         <DialogContent>

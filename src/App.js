@@ -7,7 +7,12 @@ import Events from "./views/Events";
 import Orders from "./views/Orders";
 import Settings from "./views/Settings";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import { styled, useTheme, ThemeProvider, createTheme } from "@mui/material/styles";
+import {
+  styled,
+  useTheme,
+  ThemeProvider,
+  createTheme,
+} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
@@ -26,17 +31,25 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
+import Brightness7Icon from "@mui/icons-material/Brightness7";
+import DeviceThermostatIcon from "@mui/icons-material/DeviceThermostat";
+import ThunderstormIcon from "@mui/icons-material/Thunderstorm";
+import WarningIcon from "@mui/icons-material/Warning";
+import AcUnitIcon from "@mui/icons-material/AcUnit";
+import AirIcon from "@mui/icons-material/Air";
+import OpacityIcon from "@mui/icons-material/Opacity";
+import CloudIcon from "@mui/icons-material/Cloud";
+import WbSunnyIcon from "@mui/icons-material/WbSunny";
+import ChatIcon from "@mui/icons-material/Chat";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
-import AboutUs from "./views/AboutUs";
 
 const drawerWidth = 200;
 
-const ColorModeContext = React.createContext({ toggleColorMode: () => { } });
+const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -136,16 +149,59 @@ function App() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            AMS
-          </Typography>
-          <IconButton edge="end" sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-            {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-          </IconButton>
+          <Box display="flex" flexGrow={3}>
+            <Typography variant="h6" noWrap component="div">
+              AMS
+            </Typography>
+          </Box>
+          <Box display="flex" flexGrow={1}>
+            <Box display="flex">
+              <Typography variant="caption">+10°C</Typography>
+              <DeviceThermostatIcon />
+            </Box>
+            <Box display="flex">
+              <WbSunnyIcon />
+              <CloudIcon />
+              <AcUnitIcon />
+              <ThunderstormIcon />
+            </Box>
+            <Box display="flex">
+              <Typography variant="caption">4,2mm</Typography>
+              <OpacityIcon />
+            </Box>
+            <Box display="flex">
+              <Typography variant="caption">3m/s</Typography>
+              <AirIcon />
+            </Box>
+          </Box>
+          <Box display="flex">
+            <Box display="flex">
+              <IconButton color="inherit">
+                <ChatIcon />
+              </IconButton>
+            </Box>
+            <Box display="flex">
+              <IconButton color="inherit">
+                <WarningIcon />
+              </IconButton>
+            </Box>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
         <DrawerHeader>
+          <Box display="flex" flexGrow={1}>
+            <IconButton
+              sx={{ color: "#fff" }}
+              onClick={colorMode.toggleColorMode}
+            >
+              {theme.palette.mode === "dark" ? (
+                <Brightness7Icon />
+              ) : (
+                <Brightness4Icon />
+              )}
+            </IconButton>
+          </Box>
           <IconButton sx={{ color: "#fff" }} onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
@@ -224,22 +280,21 @@ function App() {
           <Route path="/orders" element={<Orders />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/logout" element={<Login />} />
-          <Route path="/aboutus" element={<AboutUs/>} />
-        </Routes>      
+        </Routes>
       </Box>
-    </Box> 
+    </Box>
   );
 }
 
 export default function ToggleColorMode() {
-  const [mode, setMode] = React.useState('light');
+  const [mode, setMode] = React.useState("light");
   const colorMode = React.useMemo(
     () => ({
       toggleColorMode: () => {
-        setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
+        setMode((prevMode) => (prevMode === "light" ? "dark" : "light"));
       },
     }),
-    [],
+    []
   );
 
   const theme = React.useMemo(
@@ -249,7 +304,7 @@ export default function ToggleColorMode() {
           mode,
         },
       }),
-    [mode],
+    [mode]
   );
 
   return (

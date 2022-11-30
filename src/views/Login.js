@@ -31,7 +31,7 @@ export default function Login() {
             required
             fullWidth
             id="account"
-            label="Käyttäjätunnus"
+            label="Käyttäjätunnus:"
             name="account"
           />
 
@@ -46,7 +46,7 @@ export default function Login() {
             required
             fullWidth
             name="password"
-            label="Salasana"
+            label="Salasana:"
             type="password"
             id="password"
           />

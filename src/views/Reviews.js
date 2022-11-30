@@ -23,7 +23,6 @@ export default function Reviews() {
     textAlign: "left",
     margin: 10,
     padding: 10,
-    color: "black",
   }));
 
   const Item2 = styled(Paper)(({ theme }) => ({

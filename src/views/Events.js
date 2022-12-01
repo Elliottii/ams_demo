@@ -35,7 +35,7 @@ export default function Events() {
   }, []);
 
   const fetchItems = () => {
-    fetch("https://amsdemo123-default-rtdb.firebaseio.com/events/.json")
+    fetch("https://ams-final-a8741-default-rtdb.firebaseio.com/events/.json")
       .then((response) => response.json())
       .then((data) => addKeys(data))
       .catch((err) => console.error(err));

@@ -29,7 +29,7 @@ export default function Customers() {
   }, []);
 
   const fetchItems = () => {
-    fetch("https://amsdemo123-default-rtdb.firebaseio.com/customers/.json")
+    fetch("https://ams-final-a8741-default-rtdb.firebaseio.com/customers.json")
       .then((response) => response.json())
       .then((data) => addKeys(data))
       .catch((err) => console.error(err));
@@ -44,17 +44,20 @@ export default function Customers() {
   };
 
   const addCustomer = (newCustomer) => {
-    fetch("https://amsdemo123-default-rtdb.firebaseio.com/customers/.json", {
-      method: "POST",
-      body: JSON.stringify(newCustomer),
-    })
+    fetch(
+      "https://ams-final-a8741-default-rtdb.firebaseio.com/customers.json",
+      {
+        method: "POST",
+        body: JSON.stringify(newCustomer),
+      }
+    )
       .then((response) => fetchItems())
       .catch((err) => console.error(err));
   };
 
   const deleteCustomer = (id) => {
     fetch(
-      "https://amsdemo123-default-rtdb.firebaseio.com/customers/" +
+      "https://ams-final-a8741-default-rtdb.firebaseio.com/customers/" +
         id +
         ".json",
       {

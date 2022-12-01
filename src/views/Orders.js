@@ -36,7 +36,7 @@ export default function Orders() {
   }, []);
 
   const fetchItems = () => {
-    fetch("https://amsdemo123-default-rtdb.firebaseio.com/orders/.json")
+    fetch("https://ams-final-a8741-default-rtdb.firebaseio.com/orders/.json")
       .then((response) => response.json())
       .then((data) => addKeys(data))
       .catch((err) => console.error(err));

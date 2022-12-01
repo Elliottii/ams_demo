@@ -23,9 +23,7 @@ export default function Dashboard() {
     <Box sx={{ display: "flex" }}>
       <Grid container spacing={2}>
         <Grid item xs={12} lg={6}>
-          <Item>
-            <Map />
-          </Item>
+          <Map />
         </Grid>
         <Grid item xs={12} lg={6}>
           <Item>

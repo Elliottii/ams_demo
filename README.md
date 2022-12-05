@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Getting Started
+
+`npm install`
 
 `npm start`
 

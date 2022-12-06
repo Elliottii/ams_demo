@@ -1,6 +1,7 @@
 # Getting Started
 
 Clone repository and open `.env.local`
+
 Add your Google Maps API key to the file NEXT_PUBLIC_GOOGLE_MAPS_API_KEY="YOUR API KEY"
 
 `npm install`
